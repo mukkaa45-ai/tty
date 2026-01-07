@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You - Message Sent</title>
+  <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png" />
+  <style>
+    body { 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      min-height: 100vh; 
+      margin: 0; 
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Noto Sans', 'Apple Color Emoji', 'Segoe UI Emoji'; 
+      background: #f7f7f7; 
+    }
+    .fallback { 
+      text-align: center; 
+      color: #333; 
+      padding: 20px;
+    }
+    .fallback h1 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .fallback p {
+      font-size: 1.1rem;
+      margin: 0.5rem 0;
+    }
+    .fallback a { 
+      color: #00a6ca; 
+      text-decoration: none; 
+      font-weight: 600; 
+      transition: color 0.3s ease;
+    }
+    .fallback a:hover {
+      color: #008ba8;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="fallback">
+    <h1>Thank you! 🎉</h1>
+    <p>Your message was sent successfully.</p>
+    <p>Redirecting you back to the contact page...</p>
+    <p><a href="contact.php">Click here if not redirected automatically</a></p>
+  </div>
+
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    // Show SweetAlert success, then redirect back to contact page
+    window.addEventListener('DOMContentLoaded', function () {
+      if (window.Swal) {
+        Swal.fire({
+          icon: 'success',
+          title: 'Thank you! 🎉',
+          text: 'We have received your message successfully.',
+          confirmButtonText: 'OK',
+          confirmButtonColor: '#00a6ca',
+          timer: 4000,
+          timerProgressBar: true,
+          allowOutsideClick: false,
+          allowEscapeKey: false
+        }).then(function() {
+          window.location.href = 'contact.php';
+        });
+      } else {
+        // Fallback: timed redirect if SweetAlert fails to load
+        setTimeout(function() { 
+          window.location.href = 'contact.php'; 
+        }, 4000);
+      }
+    });
+  </script>
+</body>
+</html>
